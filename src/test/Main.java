@@ -6,6 +6,8 @@
 package test;
 
 import controller.ControllerRam;
+import java.util.ArrayList;
+import model.FreeArea;
 import model.Proceso;
 
 /**
@@ -25,5 +27,6 @@ public class Main {
         controller.commingProcess(new Proceso("P5", 18, Proceso.ASSIGNED));
         controller.endProcess("P1");
         controller.endProcess("P4");
+        
     }
 }
