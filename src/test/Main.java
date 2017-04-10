@@ -6,6 +6,7 @@
 package test;
 
 import controller.ControllerRam;
+import model.Proceso;
 
 /**
  *
@@ -14,6 +15,15 @@ import controller.ControllerRam;
 public class Main {
     public static void main(String[] args) {
         ControllerRam controller = new ControllerRam();
-        controller.execute();
+        controller.setBestOrder();
+        //controller.setFirstOrder();
+        controller.commingProcess(new Proceso("P1", 48, Proceso.ASSIGNED));
+        controller.commingProcess(new Proceso("P2", 24, Proceso.ASSIGNED));
+        controller.commingProcess(new Proceso("P3", 64, Proceso.ASSIGNED));
+        controller.endProcess("P2");
+        controller.commingProcess(new Proceso("P4", 10, Proceso.ASSIGNED));
+        controller.commingProcess(new Proceso("P5", 18, Proceso.ASSIGNED));
+        controller.endProcess("P1");
+        controller.endProcess("P4");
     }
 }

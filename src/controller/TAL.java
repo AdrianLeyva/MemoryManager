@@ -15,7 +15,7 @@ import model.FreeArea;
 public class TAL {
     private ArrayList<FreeArea> freeA;
 
-    
+
     public TAL() {
         this.freeA = new ArrayList<>();
     }
@@ -24,9 +24,9 @@ public class TAL {
         this.freeA = freeA;
     }
 
-    
-    
-    
+
+
+
     public ArrayList<FreeArea> getFreeA() {
         return freeA;
     }
@@ -34,9 +34,8 @@ public class TAL {
     public void setFreeA(ArrayList<FreeArea> freeA) {
         this.freeA = freeA;
     }
-    
+
     public void addAL(FreeArea area){
         this.freeA.add(area);
     }
-    
 }

@@ -9,28 +9,25 @@ package model;
  *
  * @author adrianaldairleyvasanchez
  */
-public class Process {
-    public static final String ASSIGNED = "ASSIGNED";
-    public static final String UNASSIGNED = "UNASSIGNED";
-    
-    
+public class Proceso {
+    public static String ASSIGNED = "ASSIGNED";
+    public static String UNASSIGNED = "UNASSIGNED";
+
     private String name;
     private int size;
     private String state;
-    private boolean isComing;
+    //private boolean isComing;
 
     
-    public Process() {
+    public Proceso() {
     }
 
-    public Process(String name, int size, String state) {
+    public Proceso(String name, int size, String state) {
         this.name = name;
         this.size = size;
         this.state = state;
     }
 
-    
-    
     public String getName() {
         return name;
     }
@@ -55,14 +52,16 @@ public class Process {
         this.state = state;
     }
 
-    public boolean isComing() {
+    /*public boolean isComing() {
         return isComing;
     }
 
     public void setIsComing(boolean isComing) {
         this.isComing = isComing;
+    }*/
+
+    @Override
+    public String toString() {
+        return " | name = " + getName() + " | size = " + getSize() + " | state = " + getState();
     }
-    
-    
-   
 }

@@ -3,12 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/controller/TAL.java</file>
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/model/FreeArea.java</file>
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/test/Main.java</file>
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/controller/ControllerRam.java</file>
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/controller/FirstOrder.java</file>
             <file>file:/Users/adrianaldairleyvasanchez/Documents/School/MemoryM/src/controller/TP.java</file>
+=======
+            <file>file:/D:/Escritorio/MemoryManager/src/controller/ControllerRam.java</file>
+            <file>file:/D:/Escritorio/MemoryManager/src/controller/BestOrder.java</file>
+            <file>file:/D:/Escritorio/MemoryManager/src/controller/Compactacion.java</file>
+            <file>file:/D:/Escritorio/MemoryManager/src/controller/TAL.java</file>
+            <file>file:/D:/Escritorio/MemoryManager/src/model/FreeArea.java</file>
+>>>>>>> 92980313a583f4140f4f4dcd1d58246c953a0be9
         </group>
     </open-files>
 </project-private>
