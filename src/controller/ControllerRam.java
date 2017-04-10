@@ -11,6 +11,7 @@ import java.util.Queue;
 import model.FreeArea;
 import model.Partition;
 import model.Ram;
+import model.Process;
 
 /**
  *
@@ -40,7 +41,6 @@ public class ControllerRam {
         if(process.getProcess().isComing()){
             addTAL(process);
             addTP(process);
-            addRAM(process);
         }else{//Si está terminando el proceso
             releaseMemory();
         }
@@ -52,16 +52,19 @@ public class ControllerRam {
     
     //Agrega la partición a TAL
     private void addTAL(Partition partition){
-        
+        new FirstOrder(this.tal, partition).execute();
     }
     
     //Agrega la partición a TP
     private void addTP(Partition partition){
-        
+        if(partition.getProcess().getState() == Process.ASSIGNED){
+            this.tp.addProcess(partition);
+            addRAM(partition);
+        }
     }
     //Agrega la partición a la RAM
     private void addRAM(Partition partition){
-        
+        this.memory.getPartitions().add(partition);
     }
     
     private void releaseMemory(){

@@ -10,8 +10,9 @@ package model;
  * @author adrianaldairleyvasanchez
  */
 public class Process {
-    public static String ASSIGNED = "ASSIGNED";
-    public static String UNASSIGNED = "UNASSIGNED";
+    public static final String ASSIGNED = "ASSIGNED";
+    public static final String UNASSIGNED = "UNASSIGNED";
+    
     
     private String name;
     private int size;
