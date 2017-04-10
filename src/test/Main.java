@@ -15,7 +15,7 @@ import model.Proceso;
 public class Main {
     public static void main(String[] args) {
         ControllerRam controller = new ControllerRam();
-        controller.setBestOrder();
+        controller.setWorstOrder();
         //controller.setFirstOrder();
         controller.commingProcess(new Proceso("P1", 48, Proceso.ASSIGNED));
         controller.commingProcess(new Proceso("P2", 24, Proceso.ASSIGNED));
