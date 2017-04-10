@@ -12,7 +12,7 @@ package model;
 public class FreeArea {
     public static String AVAILABLE = "AVAILABLE";
     public static String UNAVAILABLE = "UNAVAILABLE";
-    
+
     private int number;
     private int size;
     private int location;
@@ -22,7 +22,7 @@ public class FreeArea {
     public FreeArea() {
     }
 
-    
+
     public FreeArea(int number, int size, int location, String state, int position) {
         this.number = number;
         this.size = size;
