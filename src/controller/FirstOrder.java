@@ -6,22 +6,58 @@
 package controller;
 
 import model.Partition;
+import model.Proceso;
 
 /**
  *
  * @author adrianaldairleyvasanchez
  */
-public class FirstOrder {
+public class FirstOrder extends Order {
     private TAL tal;
-    private Partition partition;
+    private TP tp;
+    private Proceso process;
 
     public FirstOrder() {
+        this.tal = null;
+        this.tp = null;
+        this.process = null;
     }
 
-    public FirstOrder(TAL tal, Partition partition) {
-        this.tal = tal;
-        this.partition = partition;
+    @Override
+    public TAL getTal() {
+        return this.tal;
     }
-    
-    
+
+    @Override
+    public TP getTp() {
+        return this.tp;
+    }
+
+    @Override
+    public void setProcess(Proceso process) {
+        super.setProcess(process);
+        this.process = process;
+    }
+
+    @Override
+    public void setTp(TP tp) {
+        super.setTp(tp);
+        this.tp = tp;
+    }
+
+    @Override
+    public void setTal(TAL tal) {
+        super.setTal(tal);
+        this.tal = tal;
+    }
+
+    @Override
+    public void commingProcess() {
+        super.commingProcess();
+    }
+
+    @Override
+    public void endProcess() {
+        super.endProcess();
+    }
 }

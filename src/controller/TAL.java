@@ -38,5 +38,4 @@ public class TAL {
     public void addAL(FreeArea area){
         this.freeA.add(area);
     }
-    
 }

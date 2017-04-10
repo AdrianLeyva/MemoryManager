@@ -70,7 +70,9 @@ public class FreeArea {
     public void setPosition(int position) {
         this.position = position;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "FreeArea [number = " + getNumber() + " | size = " + getSize() + " | location = " + getLocation() + " | state = " + getState() + " | position = " + getPosition() + "]";
+    }
 }

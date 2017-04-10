@@ -5,10 +5,59 @@
  */
 package controller;
 
+import model.Proceso;
+
 /**
  *
  * @author adrianaldairleyvasanchez
  */
-public class WorstOrder {
-    
+public class WorstOrder extends Order {
+
+    private TAL tal;
+    private TP tp;
+    private Proceso process;
+
+    public WorstOrder() {
+        this.tal = null;
+        this.tp = null;
+        this.process = null;
+    }
+
+    @Override
+    public TAL getTal() {
+        return this.tal;
+    }
+
+    @Override
+    public TP getTp() {
+        return this.tp;
+    }
+
+    @Override
+    public void setProcess(Proceso process) {
+        super.setProcess(process);
+        this.process = process;
+    }
+
+    @Override
+    public void setTp(TP tp) {
+        super.setTp(tp);
+        this.tp = tp;
+    }
+
+    @Override
+    public void setTal(TAL tal) {
+        super.setTal(tal);
+        this.tal = tal;
+    }
+
+    @Override
+    public void commingProcess() {
+        super.commingProcess();
+    }
+
+    @Override
+    public void endProcess() {
+        super.endProcess();
+    }
 }

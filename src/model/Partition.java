@@ -11,9 +11,9 @@ package model;
  */
 public class Partition {
     private int location;
-    private Process process;
+    private Proceso process;
 
-    public Partition(int location, Process process) {
+    public Partition(int location, Proceso process) {
         this.location = location;
         this.process = process;
     }
@@ -26,13 +26,17 @@ public class Partition {
         this.location = location;
     }
 
-    public Process getProcess() {
+    public Proceso getProcess() {
         return process;
     }
 
-    public void setProcess(Process process) {
+    public void setProcess(Proceso process) {
         this.process = process;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Partition [location = " + getLocation()
+                + getProcess().toString() + "]";
+    }
 }
