@@ -5,11 +5,7 @@
  */
 package controller;
 
-/*import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;*/
 import model.FreeArea;
-//import model.Partition;
 import model.Proceso;
 import model.Ram;
 /**
@@ -21,16 +17,12 @@ public class ControllerRam {
     private Ram memory;
     private TAL tal;
     private TP tp;
-    //private ArrayList<Partition> processes;
-    //private Queue processQueue;
     private Order order;
 
     public ControllerRam() {
-        this.memory = new Ram(1024,100); //Tamaño total / Tamaño SO
+        this.memory = new Ram(256,32); //Tamaño total / Tamaño SO
         this.tal = new TAL();
         this.tp = new TP();
-        //this.processes = listProcesses;
-        //this.processQueue = new LinkedList();
         initialConfiguration();
     }
 
@@ -41,9 +33,11 @@ public class ControllerRam {
         this.order.commingProcess();
         this.tal = this.order.getTal();
         this.tp = this.order.getTp();
-        printTAL();
-        printTP();
-        System.out.println("");
+        if (this.order.getPrint()) {
+            printTAL();
+            printTP();
+            System.out.println("");
+        }
     }
 
     public void endProcess(String name) {
@@ -55,9 +49,11 @@ public class ControllerRam {
             this.order.endProcess();
             this.tal = this.order.getTal();
             this.tp = this.order.getTp();
-            printTAL();
-            printTP();
-            System.out.println("");
+            if (this.order.getPrint()) {
+                printTAL();
+                printTP();
+                System.out.println("");
+            }
         } else {
             System.out.println(name + " no existe ese proceso en la Tabla de Procesos");
         }
@@ -98,47 +94,7 @@ public class ControllerRam {
         }
     }
 
-    /*public void execute(){
-        initialConfiguration();
-        Partition process = (Partition)getComingProcesses();
-
-        //Si esta llegando el proceso
-        if(process.getProcess().isComing()){
-            addTAL(process);
-            addTP(process);
-        }else{//Si está terminando el proceso
-            releaseMemory();
-        }
-    }
-
-    private Object getComingProcesses(){
-        return processQueue.poll();
-    }
-
-    //Agrega la partición a TAL
-    private void addTAL(Partition partition){
-        new FirstOrder(this.tal, partition).execute();
-    }
-
-    //Agrega la partición a TP
-    private void addTP(Partition partition){
-        if(partition.getProcess().getState() == Process.ASSIGNED){
-            this.tp.addProcess(partition);
-            addRAM(partition);
-        }
-    }
-
-    //Agrega la partición a la RAM
-    private void addRAM(Partition partition){
-        this.memory.getPartitions().add(partition);
-    }
-
-    private void releaseMemory(){
-        
-    }*/
-
     private void initialConfiguration(){
-        //convertListToQueue();
         int availableSize = this.memory.getTotalSize()
                 - this.memory.getSizeOS();
         FreeArea area = new FreeArea(1, availableSize
@@ -148,10 +104,4 @@ public class ControllerRam {
         printTP();
         System.out.println("");
     }
-
-    /*private void convertListToQueue(){
-        for(Partition partition : processes){
-            processQueue.add(partition);
-        }
-    }*/
 }

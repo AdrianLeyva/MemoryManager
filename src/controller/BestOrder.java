@@ -11,12 +11,13 @@ import model.Proceso;
 
 /**
  *
- * @author adrianaldairleyvasanchez
+ * @author Braulio Betancourt
  */
 public class BestOrder extends Order {
     private TAL tal;
     private TP tp;
     private Proceso process;
+    private boolean print;
 
     /**
      * Constructor principal.
@@ -25,6 +26,7 @@ public class BestOrder extends Order {
         this.tal = null;
         this.tp = null;
         this.process = null;
+        this.print = true;
     }
 
     /**
@@ -54,19 +56,77 @@ public class BestOrder extends Order {
     /**
      * Coloca una nueva particion en la Tabla de Particiones.
      */
-    private void setProcess() {
+    private void setPartition(Proceso process) {
+        boolean band = false;
         for (int i = 0; i < this.tal.getFreeA().size(); i++) {
-            if (this.process.getSize()
+            if (process.getSize()
                     <= this.tal.getFreeA().get(i).getSize()
                     && (this.tal.getFreeA().get(i).getState())
                                 .equals(FreeArea.AVAILABLE)) {
                 this.tp.addProcess(new Partition(
                         this.tal.getFreeA().get(i).getLocation()
-                        , this.process));
+                        , process));
+                band = true;
                 updateTAL();
                 break;
             }
         }
+        if (!band) {
+            checkCompaction(process);
+        }
+    }
+
+    private void checkCompaction(Proceso process) {
+        if (this.process.getSize() <= totalSizeAL()) {
+            Compactacion compaq = new Compactacion(this.tal, this.tp, process);
+            boolean band = compaq.compactacion();
+            if (band) {
+                this.tal = compaq.getTAL();
+                setPartition(process);
+            } else {
+                updateTables(compaq);
+                setPartition(process);
+            }
+        } else {
+            System.out.println("No da esta wea men, intenta con otro alv");
+            this.print = false;
+        }
+    }
+
+    private int totalSizeAL() {
+        int totalSize = 0;
+        for (int i = 0; i < this.tal.getFreeA().size(); i++) {
+            if ((this.tal.getFreeA().get(i).getState()).equals(FreeArea.AVAILABLE)) {
+                totalSize += this.tal.getFreeA().get(i).getSize();
+            }
+        }
+        return totalSize;
+    }
+
+    private void updateTables(Compactacion compaq) {
+        Proceso process = foundProcess();
+        if (process != null) {
+            unassignProcess(process);
+            compaq.compactacion();
+            this.tal = compaq.getTAL();
+            setPartition(process);
+        }
+    }
+
+    private Proceso foundProcess() {
+        Proceso process = null;
+        int val;
+        for (int i = 0; i < this.tal.getFreeA().size(); i++) {
+            val = this.tal.getFreeA().get(i).getLocation()
+                    + this.tal.getFreeA().get(i).getSize();
+            for (int j = 0; j < this.tp.getPartitions().size(); j++) {
+                if (val == this.tp.getPartitions().get(j).getLocation()) {
+                    process = this.tp.getPartitions().get(j).getProcess();
+                    break;
+                }
+            }
+        }
+        return process;
     }
 
     /**
@@ -93,9 +153,9 @@ public class BestOrder extends Order {
         }
     }
 
-    private void unassignProcess() {
+    private void unassignProcess(Proceso process) {
         for (int i = 0; i < this.tp.getPartitions().size(); i++) {
-            if ((this.process.getName()).equals(
+            if ((process.getName()).equals(
                     this.tp.getPartitions().get(i).getProcess().getName())
                     && (this.tp.getPartitions().get(i).getProcess()
                             .getState()).equals(Proceso.ASSIGNED)) {
@@ -130,6 +190,11 @@ public class BestOrder extends Order {
     }
 
     @Override
+    public boolean getPrint() {
+        return this.print;
+    }
+
+    @Override
     public void setTal(TAL tal) {
         super.setTal(tal);
         this.tal = tal;
@@ -155,8 +220,9 @@ public class BestOrder extends Order {
     @Override
     public void commingProcess() {
         super.commingProcess();
+        this.print = true;
         sortTAL();
-        setProcess();
+        setPartition(this.process);
     }
 
     /**
@@ -166,6 +232,7 @@ public class BestOrder extends Order {
     @Override
     public void endProcess() {
         super.endProcess();
-        unassignProcess();
+        this.print = true;
+        unassignProcess(this.process);
     }
 }

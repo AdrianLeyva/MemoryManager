@@ -18,11 +18,13 @@ public class FirstOrder extends Order {
     private TAL tal;
     private TP tp;
     private Proceso process;
+    private boolean print;
 
     public FirstOrder() {
         this.tal = null;
         this.tp = null;
         this.process = null;
+        this.print = true;
     }
 
     
@@ -118,6 +120,11 @@ public class FirstOrder extends Order {
     }
 
     @Override
+    public boolean getPrint() {
+        return this.print;
+    }
+
+    @Override
     public void setProcess(Proceso process) {
         super.setProcess(process);
         this.process = process;
@@ -138,6 +145,7 @@ public class FirstOrder extends Order {
     @Override
      public void commingProcess() {
         super.commingProcess();
+        this.print = true;
         sortTAL();
         setProcess();
     }
@@ -145,6 +153,7 @@ public class FirstOrder extends Order {
     @Override
     public void endProcess() {
         super.endProcess();
+        this.print = true;
         unassignProcess();
     }
 }

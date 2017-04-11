@@ -16,7 +16,6 @@ public class Proceso {
     private String name;
     private int size;
     private String state;
-    //private boolean isComing;
 
     
     public Proceso() {
@@ -51,14 +50,6 @@ public class Proceso {
     public void setState(String state) {
         this.state = state;
     }
-
-    /*public boolean isComing() {
-        return isComing;
-    }
-
-    public void setIsComing(boolean isComing) {
-        this.isComing = isComing;
-    }*/
 
     @Override
     public String toString() {
