@@ -88,7 +88,7 @@ public class BestOrder extends Order {
                 setPartition(process);
             }
         } else {
-            System.out.println("No da esta wea men, intenta con otro alv");
+            System.out.println("No hay espacio suficiente");
             this.print = false;
         }
     }
