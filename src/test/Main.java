@@ -16,8 +16,8 @@ public class Main {
     public static void main(String[] args) {
         ControllerRam controller = new ControllerRam();
         //controller.setFirstOrder();
-        controller.setBestOrder();
-        //controller.setWorstOrder();
+        //controller.setBestOrder();
+        controller.setWorstOrder();
         controller.commingProcess(new Proceso("P1", 48, Proceso.ASSIGNED));
         controller.commingProcess(new Proceso("P2", 24, Proceso.ASSIGNED));
         controller.commingProcess(new Proceso("P3", 64, Proceso.ASSIGNED));
